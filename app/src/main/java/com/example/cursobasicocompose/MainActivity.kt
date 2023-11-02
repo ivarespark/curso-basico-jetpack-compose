@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,29 +38,35 @@ class MainActivity : ComponentActivity() {
 fun app() {
     // Modificadores se pueden concatenar
     // Siguen el orden, lo primero que se aplica es lo primero que se asigna
-    Column(
+    LazyColumn(
+        // Lazy column permite hacer scroll
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
     ) {
-        Image(
-            modifier = Modifier.fillMaxWidth().height(200.dp),
-            painter = painterResource(id = R.drawable.house),
-            contentDescription = "Casa logo"
-        )
-        Text(
-            text = "Ivan",
-            fontSize = 32.sp,
-            color = Color.Blue,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Suscribete",
-            color = Color.Red,
-            fontSize = 16.sp
-        )
-        Text(text = "Año 2023")
+        // En los lazy column solo se puede utilizar items
+        // por eso se debe meter los componentes dentro de ITEMS
+        item {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                painter = painterResource(id = R.drawable.house),
+                contentDescription = "Casa logo"
+            )
+            Text(
+                text = "Ivan",
+                fontSize = 32.sp,
+                color = Color.Blue,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = "Suscribete",
+                color = Color.Red,
+                fontSize = 16.sp
+            )
+            Text(text = "Año 2023")
+        }
     }
-
 }
